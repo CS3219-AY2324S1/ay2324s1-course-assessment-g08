@@ -13,6 +13,7 @@ const ACTIONS = {
     DECLINE_QUESTION_CHANGE: "decline-question-change",
     CHECK_SYNC: "check-sync",
     CHANGE_QUESTION: "change-question",
+    CODE_EXECUTING: "code-executing"
 };
 
 module.exports = ACTIONS;

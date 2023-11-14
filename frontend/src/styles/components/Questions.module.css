@@ -7,12 +7,12 @@
   flex-grow: 1;
   padding-bottom: 6vh;
   position: relative;
+  height: 620px;
 }
 
 .questions-table {
   width: 100%;
   padding-top: 10px;
-  margin: auto;
   table-layout: fixed;
   border-collapse: separate;
   border-spacing: 5px;
@@ -44,18 +44,18 @@
 }
 
 .title-column {
-  width: 50%;
+  width: 35%;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
 }
 
 .category-column {
-  width: 40%;
+  width: 55%;
 }
 
 .complexity-column {
-  width: 5%;
+  width: 10%;
 }
 
 .delete-column {

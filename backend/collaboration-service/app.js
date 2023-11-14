@@ -124,6 +124,10 @@ io.on("connection", (socket) => {
         });
     });
 
+    socket.on(ACTIONS.CODE_EXECUTING, ({ roomId }) => {
+        socket.in(roomId).emit(ACTIONS.CODE_EXECUTING);
+    });
+
     socket.on(ACTIONS.SYNC_QUESTION, ({ roomId, newQuestionId }) => {
         socket.in(roomId).emit(ACTIONS.SYNC_QUESTION, {
             newQuestionId

@@ -73,6 +73,7 @@ const Editor = ({
                     autoCloseTags: true,
                     autoCloseBrackets: true,
                     lineNumbers: true,
+                    indentUnit: 4
                 }
             );
 
