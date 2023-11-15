@@ -1,0 +1,76 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: peerprep-ingress
+  namespace: peerprep
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
+    nginx.ingress.kubernetes.io/websocket-services: "collaboration-service,matching-service,communication-service"
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  ingressClassName: "nginx"
+  tls:
+    - hosts:
+      - peerprepbackend.com
+      secretName: peerprep-tls
+  rules:
+    - host: "peerprepbackend.com"
+      http:
+        paths:
+          - path: /question-service
+            pathType: Prefix
+            backend:
+              service:
+                name: question-service
+                port:
+                  number: 3001
+          - path: /user-service
+            pathType: Prefix
+            backend:
+              service:
+                name: user-service
+                port:
+                  number: 3002
+          - path: /matching-service
+            pathType: Prefix
+            backend:
+              service:
+                name: matching-service
+                port:
+                  number: 3003
+          - path: /collaboration-service
+            pathType: Prefix
+            backend:
+              service:
+                name: collaboration-service
+                port:
+                  number: 3004
+          - path: /communication-service
+            pathType: Prefix
+            backend:
+              service:
+                name: communication-service
+                port:
+                  number: 3005
+          - path: /ai-service
+            pathType: Prefix
+            backend:
+              service:
+                name: ai-service
+                port:
+                  number: 3006
+          - path: /code-exec-service
+            pathType: Prefix
+            backend:
+              service:
+                name: code-exec-service
+                port:
+                  number: 3007
+          - path: /history-service
+            pathType: Prefix
+            backend:
+              service:
+                name: history-service
+                port:
+                  number: 3008

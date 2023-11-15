@@ -1,0 +1,103 @@
+/* General styling for the chat feature */
+.chat-main {
+  font-family: "Arial", sans-serif;
+}
+
+.chat-button {
+  background-color: #333232;
+  color: #ffffff; /* White text for contrast */
+  padding: 10px;
+}
+.chat-button:hover {
+  background-color: #4a4a4a;
+}
+/* Modal's overall styling */
+.chat-modal {
+  position: absolute;
+  width: 320px; /* Adjusted for consistent padding */
+  height: 400px;
+  background-color: #2c2c2c; /* Darker background for modal */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+}
+.button-holder {
+  display: flex;
+  align-items: center;
+}
+/* Close button styling */
+.close-button {
+  background-color: transparent;
+  margin-left: auto;
+  border: none;
+  font-size: 20px;
+  color: white;
+  cursor: pointer;
+}
+
+/* Chat box styling inside modal */
+.chat-box {
+  background-color: #1e1e1e;
+  padding: 10px;
+  height: 320px;
+  overflow-y: auto;
+  margin: 10px 10px 0 10px; /* Added horizontal margins */
+  border-radius: 5px;
+}
+
+/* Messages sent by user */
+.message-sent {
+  background-color: #0a74da;
+  color: white;
+  padding: 5px 10px;
+  margin: 5px 0;
+  border-radius: 10px 0px 10px 10px;
+  align-self: flex-end;
+  max-width: 70%;
+  overflow-wrap: break-word;
+  align-self: flex-end;
+  margin-left: auto;
+}
+
+/* Messages received from others */
+.message-received {
+  background-color: #333;
+  color: white;
+  padding: 5px 10px;
+  margin: 5px 0;
+  border-radius: 0px 10px 10px 10px;
+  align-self: flex-start;
+  max-width: 70%;
+  overflow-wrap: break-word;
+  align-self: flex-start;
+  text-align: left;
+}
+
+/* Input box to type messages */
+.message-input {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px; /* Added padding */
+}
+
+.message-input input {
+  flex: 1;
+  padding: 5px;
+  margin-right: 10px;
+  border-radius: 5px;
+  border: 1px solid #333;
+  background-color: #2c2c2c; /* Darker input background */
+  color: white; /* Light color text */
+}
+
+.message-input button {
+  padding: 5px 10px;
+  background-color: #0a74da;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  align-self: center;
+}

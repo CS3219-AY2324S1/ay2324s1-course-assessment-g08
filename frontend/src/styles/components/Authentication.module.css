@@ -1,0 +1,69 @@
+.container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header {
+  align-self: center;
+  margin-bottom: 1rem;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  width: 50%;
+  align-self: center;
+}
+
+.input {
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+.submit-button {
+  background-color: rgb(47, 162, 200);
+  color: white;
+  padding: 12px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.submit-button:hover {
+  background-color: rgb(47, 162, 200, 0.8);
+  transition: background-color 0.2s;
+}
+
+.question-link {
+  text-decoration: none;
+  color: white;
+  text-align: center;
+}
+
+.error-msg {
+  color: red;
+  font-size: 0.8rem;
+}
+
+.back-btn {
+  color: white;
+  text-decoration: none;
+  font-size: 0.8rem;
+  align-self: flex-end;
+}
+
+.back-btn:hover {
+  color: rgb(208, 202, 202);
+  transition: color 0.5s;
+}

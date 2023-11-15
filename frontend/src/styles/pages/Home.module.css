@@ -1,0 +1,16 @@
+.container {
+    padding: 5% 15% 100px 15%;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    min-height: 70vh;
+}
+
+.right-container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+

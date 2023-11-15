@@ -1,0 +1,61 @@
+.description-container {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.description-editor {
+    border: 1px solid grey;
+    justify-self: stretch;
+    flex-grow: 1;
+}
+
+.description-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.error-msg {
+    color: red;
+}
+
+.code-template-outer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-self: flex-start;
+}
+
+.code-template-container {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.code-template-textarea {
+    align-self: stretch;
+}
+
+.test-case-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.argument-container {
+    display: flex;
+    gap: 10px;
+}
+
+.template-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.add-argument-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}

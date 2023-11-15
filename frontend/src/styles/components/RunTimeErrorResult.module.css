@@ -1,0 +1,20 @@
+.results-bar {
+    background-color: #1c1e29;
+    padding: 20px;
+    border-radius: 7px;
+    max-height: 25vh;
+    overflow-y: scroll;
+}
+
+.runtime-error-header {
+    margin: 0;
+    color: red;
+}
+
+.runtime-error-msg {
+    margin-bottom: 0;
+    color: #f1635f;
+    background-color: #ef47431f;
+    padding: 5px;
+    border-radius: 8px;
+}

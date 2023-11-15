@@ -1,0 +1,98 @@
+/* AiChat.module.css */
+.overlay {
+  position: fixed; /* Fixed position */
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(
+    -50%,
+    -50%
+  ); /* Adjust for the container's own dimensions */
+  z-index: 1000; /* Ensure it's on top but allows interaction with content behind */
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #555;
+}
+
+.title {
+  font-size: 1.5rem;
+}
+
+.chat-container {
+  background: #2c2c2c;
+  overflow: scroll;
+  border-radius: 5px;
+  width: 400px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  color: #e0e0e0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #e0e0e0;
+}
+
+.message-input {
+  margin-top: auto;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  background: #1a1a1a;
+}
+
+.input-field {
+  width: 80%;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid #555;
+  background-color: #333;
+  color: #e0e0e0;
+}
+
+.send-btn {
+  background: #444;
+  border: 1px solid #555;
+  border-radius: 5px;
+  padding: 5px 15px;
+  cursor: pointer;
+  color: #e0e0e0;
+}
+
+.user,
+.system {
+  padding: 10px;
+}
+
+.user {
+  background-color: #333;
+}
+
+.system {
+  background-color: #444;
+}
+
+.textarea-field {
+  width: 80%;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid #555;
+  background-color: #333;
+  color: #e0e0e0;
+  resize: vertical; /* allow vertical resizing */
+  min-height: 50px; /* adjust based on your preference */
+  max-height: 150px; /* adjust based on your preference */
+  overflow-y: auto; /* scrollbar if the content exceeds max-height */
+}

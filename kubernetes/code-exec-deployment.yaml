@@ -1,0 +1,84 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: code-exec-service
+  name: code-exec-service
+  namespace: peerprep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: code-exec-service
+  template:
+    metadata:
+      labels:
+        app: code-exec-service
+    spec:
+      containers:
+      - image: <IMAGE>
+        imagePullPolicy: Always
+        env:
+        - name: CODE_EXECUTION_URL
+          valueFrom:
+            secretKeyRef:
+              name: peerprep-secret
+              key: CODE_EXECUTION_URL
+        - name: X_RAPIDAPI_KEY
+          valueFrom:
+            secretKeyRef:
+              name: peerprep-secret
+              key: X_RAPIDAPI_KEY
+        - name: X_RAPIDAPI_HOST
+          valueFrom:
+            secretKeyRef:
+              name: peerprep-secret
+              key: X_RAPIDAPI_HOST
+        - name: JWT_SECRET_KEY
+          valueFrom:
+            secretKeyRef:
+              name: peerprep-secret
+              key: JWT_SECRET_KEY
+        name: code-exec-service
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "100m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+      restartPolicy: Always
+status: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: code-exec-service
+  namespace: peerprep
+spec:
+  selector:
+    app: code-exec-service
+  ports:
+    - protocol: TCP
+      port: 3007
+  type: ClusterIP
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: code-exec-hpa
+  namespace: peerprep
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: code-exec-service
+  minReplicas: 1
+  maxReplicas: 3
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 80

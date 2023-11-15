@@ -1,0 +1,48 @@
+name: Deploy ai service to DigitalOcean Kubernetes
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'backend/ai-service/**'
+      - 'kubernetes/ai-deployment.yaml'
+      - '.github/workflows/aiService-workflow.yaml'
+    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout master
+      uses: actions/checkout@main
+
+    - name: Install doctl
+      uses: digitalocean/action-doctl@v2
+      with:
+        token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+
+    - name: Update Docker settings
+      run: |
+        sudo sed -i 's/ }/, \"max-concurrent-uploads\": 2 }/' /etc/docker/daemon.json
+        sudo systemctl restart docker
+
+    - name: Build ai service container image
+      run: docker build -t ${{ secrets.REGISTRY_NAME }}/ai-service:$(echo $GITHUB_SHA | head -c7) $GITHUB_WORKSPACE/backend/ai-service
+
+    - name: Log in to DigitalOcean Container Registry with short-lived credentials
+      run: doctl registry login --expiry-seconds 1200
+
+    - name: Push ai-service image to DigitalOcean Container Registry
+      run: docker push ${{ secrets.REGISTRY_NAME }}/ai-service:$(echo $GITHUB_SHA | head -c7)
+
+    - name: Update ai deployment file
+      run: TAG=$(echo $GITHUB_SHA | head -c7) && sed -i 's|<IMAGE>|${{ secrets.REGISTRY_NAME }}/ai-service:'${TAG}'|' $GITHUB_WORKSPACE/kubernetes/ai-deployment.yaml
+
+    - name: Save DigitalOcean kubeconfig with short-lived credentials
+      run: doctl kubernetes cluster kubeconfig save --expiry-seconds 600 ${{ secrets.CLUSTER_NAME }}
+
+    - name: Deploy ai-deployment DigitalOcean Kubernetes
+      run: kubectl apply -f $GITHUB_WORKSPACE/kubernetes/ai-deployment.yaml
+
+    - name: Configure kubernetes ingress
+      run: kubectl apply -f $GITHUB_WORKSPACE/kubernetes/ingress.yaml

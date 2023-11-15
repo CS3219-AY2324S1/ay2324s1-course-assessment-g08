@@ -1,0 +1,17 @@
+/question-service/node_modules
+/question-service/.env
+
+/user-service/node_modules
+/user-service/.env
+
+/matching-service/node_modules
+/matching-service/.env
+
+/collaboration-service/node_modules
+/collaboration-service/.env
+
+/communication-service/node_modules
+/communication-service/.env
+
+/code-exec-service/node_modules
+/code-exec-service/.env

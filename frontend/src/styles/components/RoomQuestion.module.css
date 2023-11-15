@@ -1,0 +1,7 @@
+.content img {
+    max-width: 90% !important;
+}
+
+.content pre {
+    white-space: normal;
+}

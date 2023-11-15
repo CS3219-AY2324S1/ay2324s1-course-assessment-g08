@@ -1,0 +1,120 @@
+.container {
+  background-color: #232323;
+  padding: 20px;
+  box-shadow: rgba(0, 0, 0, 0.9) 2px 2px 4px;
+  border-radius: 20px;
+  align-self: stretch;
+  flex-grow: 1;
+  padding-bottom: 6vh;
+  position: relative;
+  height: 670px;
+}
+
+.questions-table {
+  width: 100%;
+  padding-top: 10px;
+  table-layout: fixed;
+  border-collapse: separate;
+  border-spacing: 5px;
+}
+
+.questions-table tr > td:first-child {
+  padding-right: 15px;
+}
+
+.questions-table tr td:first-child::before {
+  min-width: 1em;
+  margin-right: 0.5em;
+}
+
+.questions-table th {
+  color: grey;
+  text-align: left;
+  padding-bottom: 10px;
+}
+
+.question-link {
+  text-decoration: none;
+  color: white;
+}
+
+.question-link:hover {
+  color: rgb(47, 162, 200);
+  transition: color 0.5s;
+}
+
+.title-column {
+  width: 35%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.category-column {
+  width: 50%;
+}
+
+.complexity-column {
+  width: 10%;
+}
+
+.delete-column {
+  display: flex;
+  justify-content: center;
+}
+
+.easy-complexity {
+  color: #03c3ac;
+}
+
+.medium-complexity {
+  color: darkorange;
+}
+
+.hard-complexity {
+  color: red;
+}
+
+.horizontal-line {
+  height: 1px;
+  border: none;
+  background-color: grey;
+}
+
+.category-values {
+  display: flex;
+  gap: 5px;
+}
+
+.pagination {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  display: flex;
+  list-style: none;
+  padding: 0;
+  background-color: #232323;
+}
+
+.pagination li {
+  margin-right: 5px;
+}
+
+.pagination a {
+  text-decoration: none;
+  cursor: pointer;
+  padding: 8px 12px;
+  border: 1px solid #232323;
+  border-radius: 4px;
+  color: #fff;
+  background-color: #232323;
+}
+
+.pagination .active a {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.pagination a:hover {
+  background-color: #007bff;
+}

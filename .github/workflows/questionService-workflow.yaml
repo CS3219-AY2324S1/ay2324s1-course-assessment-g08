@@ -1,0 +1,48 @@
+name: Deploy question service to DigitalOcean Kubernetes
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'backend/question-service/**'
+      - 'kubernetes/question-deployment.yaml'
+      - '.github/workflows/questionService-workflow.yaml'
+    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout master
+      uses: actions/checkout@main
+
+    - name: Install doctl
+      uses: digitalocean/action-doctl@v2
+      with:
+        token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+
+    - name: Update Docker settings
+      run: |
+        sudo sed -i 's/ }/, \"max-concurrent-uploads\": 2 }/' /etc/docker/daemon.json
+        sudo systemctl restart docker
+    
+    - name: Build question service container image
+      run: docker build -t ${{ secrets.REGISTRY_NAME }}/question-service:$(echo $GITHUB_SHA | head -c7) $GITHUB_WORKSPACE/backend/question-service
+
+    - name: Log in to DigitalOcean Container Registry with short-lived credentials
+      run: doctl registry login --expiry-seconds 1200
+
+    - name: Push question-service image to DigitalOcean Container Registry
+      run: docker push ${{ secrets.REGISTRY_NAME }}/question-service:$(echo $GITHUB_SHA | head -c7)
+
+    - name: Update question deployment file
+      run: TAG=$(echo $GITHUB_SHA | head -c7) && sed -i 's|<IMAGE>|${{ secrets.REGISTRY_NAME }}/question-service:'${TAG}'|' $GITHUB_WORKSPACE/kubernetes/question-deployment.yaml
+
+    - name: Save DigitalOcean kubeconfig with short-lived credentials
+      run: doctl kubernetes cluster kubeconfig save --expiry-seconds 600 ${{ secrets.CLUSTER_NAME }}
+
+    - name: Deploy question-deployment DigitalOcean Kubernetes
+      run: kubectl apply -f $GITHUB_WORKSPACE/kubernetes/question-deployment.yaml
+
+    - name: Configure kubernetes ingress
+      run: kubectl apply -f $GITHUB_WORKSPACE/kubernetes/ingress.yaml

@@ -1,0 +1,19 @@
+.toggle-btns {
+    display: flex;
+    gap: 10px;
+}
+
+.test-case-btn,
+.result-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.test-case-btn:hover,
+.result-btn:hover {
+    color: rgb(209, 203, 203) !important;
+}

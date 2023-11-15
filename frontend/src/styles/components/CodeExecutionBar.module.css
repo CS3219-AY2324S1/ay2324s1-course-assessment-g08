@@ -1,0 +1,28 @@
+.execution-bar {
+    background-color: #1c1e29;
+    border-radius: 8px;
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.results-btn {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.run-btn {
+    padding: 5px 15px;
+    cursor: pointer;
+    font-size: 1rem;
+    background-color: orange;
+    border: none;
+    border-radius: 7px;
+    transition: background-color 0.3s;
+}
+
+.run-btn:hover {
+    background-color: rgb(186, 128, 19);
+}

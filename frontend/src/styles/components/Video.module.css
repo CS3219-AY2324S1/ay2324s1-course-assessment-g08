@@ -1,0 +1,45 @@
+.video-modal {
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.video-modal {
+  position: absolute;
+  width: 20vw;
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  z-index: 1000;
+  cursor: grab;
+  color: black;
+}
+.toggle-button {
+  align-self: center;
+}
+.close-button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  background: transparent;
+  border: none;
+}
+.video-container {
+  width: 100%;
+}
+.local-video-container {
+  width: 100%;
+}
+
+/* Video Button Specific Styling */
+.video-button {
+  background-color: #888;
+  color: #ffffff; /* White text for contrast */
+  padding: 10px;
+}
+
+.video-button:hover {
+  background-color: #707070;
+}

@@ -1,0 +1,50 @@
+version: "3"
+
+services:
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - matching_service
+      - question_service
+      - user_service
+      - collaboration_service
+
+  matching_service:
+    build:
+      context: ./backend/matching-service
+    ports:
+      - "3003:3003"
+    env_file:
+      - ./backend/matching-service/.env
+
+  question_service:
+    build:
+      context: ./backend/question-service
+    ports:
+      - "3001:3001"
+    env_file:
+      - ./backend/question-service/.env
+
+  user_service:
+    build:
+      context: ./backend/user-service
+    ports:
+      - "3002:3002"
+    env_file:
+      - ./backend/user-service/.env
+
+  collaboration_service:
+    build:
+      context: ./backend/collaboration-service
+    ports:
+      - "3004:3004"
+    env_file:
+      - ./backend/collaboration-service/.env
+
+networks:
+  default:
+    external:
+      name: my-network

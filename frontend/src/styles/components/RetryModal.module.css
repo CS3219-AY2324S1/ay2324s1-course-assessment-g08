@@ -1,0 +1,32 @@
+.box {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+.button-group {
+    display: flex;
+    gap: 20px;
+}
+
+.retry-btn {
+    font-size: 1.25rem;
+    background: darkorange;
+    border: none;
+    padding: 5px 30px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.retry-btn:hover {
+    background-color: orange;
+    transition: background-color 0.5s;
+  }
+
+.cancel-btn {
+    cursor: pointer;
+    padding: 5px 20px;
+    border-radius: 10px;
+    font-size: 1.25rem;
+}

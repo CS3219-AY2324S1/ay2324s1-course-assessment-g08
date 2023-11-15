@@ -1,0 +1,32 @@
+{
+  "name": "ay2324s1-course-assessment-g08",
+  "version": "1.0.0",
+  "description": "[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/6BOvYMwN)",
+  "main": "index.js",
+  "scripts": {
+    "frontend": "cd frontend && npm start",
+    "collaboration-service": "cd backend/collaboration-service && npm run start-dev",
+    "matching-service": "cd backend/matching-service && npm run start-dev",
+    "question-service": "cd backend/question-service && npm run start-dev",
+    "user-service": "cd backend/user-service && npm run start-dev",
+    "communication-service": "cd backend/communication-service && npm run start-dev",
+    "ai-service": "cd backend/ai-service && npm run start-dev",
+    "history-service": "cd backend/history-service && npm run start-dev",
+    "code-exec-service": "cd backend/code-exec-service && npm run start-dev",
+    "start-all": "concurrently npm:frontend npm:collaboration-service npm:code-exec-service npm:matching-service npm:question-service npm:user-service npm:communication-service npm:ai-service npm:history-service"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jgyj123/ay2324s1-course-assessment-g08.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jgyj123/ay2324s1-course-assessment-g08/issues"
+  },
+  "homepage": "https://github.com/jgyj123/ay2324s1-course-assessment-g08#readme",
+  "dependencies": {
+    "concurrently": "^8.2.1"
+  }
+}
